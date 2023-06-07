@@ -11,4 +11,10 @@ export class RequestsService {
   create(createRequestDto: CreateRequestDto) {
     return this.requestModel.create({ ...createRequestDto });
   }
+
+  async findLast() {
+    return this.requestModel.findOne({
+      order: [['createdAt', 'DESC']],
+    });
+  }
 }
