@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 
 import { RequestsService } from './requests.service';
 import { CreateRequestDto } from './dto/create-request.dto';
@@ -10,5 +10,10 @@ export class RequestsController {
   @Post()
   create(@Body() createRequestDto: CreateRequestDto) {
     return this.requestsService.create(createRequestDto);
+  }
+
+  @Get('last')
+  findLast() {
+    return this.requestsService.findLast();
   }
 }
